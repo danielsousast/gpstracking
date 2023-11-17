@@ -2,7 +2,7 @@ import React, {PropsWithChildren} from 'react';
 import * as S from './Screen.styles';
 import {ScreenHeader} from '../ScreenHeader/ScreenHeader';
 
-const Screen = ({children}: PropsWithChildren) => {
+export function Screen({children}: PropsWithChildren) {
   return (
     <React.Fragment>
       <ScreenHeader />
@@ -11,6 +11,4 @@ const Screen = ({children}: PropsWithChildren) => {
       </S.ScreenContainer>
     </React.Fragment>
   );
-};
-
-export default Screen;
+}

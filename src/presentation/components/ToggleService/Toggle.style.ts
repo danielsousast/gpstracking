@@ -10,10 +10,3 @@ export const ToggleContainer = styled.View`
 export const ToggleContent = styled.View`
   flex: 1;
 `;
-
-export const ToggleTitle = styled.Text`
-  font-size: 18px;
-  margin-bottom: 6px;
-`;
-
-export const ToggleDescription = styled.Text``;

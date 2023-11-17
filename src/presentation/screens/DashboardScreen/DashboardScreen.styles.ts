@@ -1,10 +1,5 @@
 import styled from 'styled-components/native';
 
-export const ScreenTitle = styled.Text`
-  font-size: 22px;
-  font-weight: bold;
-`;
-
 export const Wrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -26,4 +21,11 @@ export const StatusText = styled.Text`
   font-size: 16px;
   font-style: italic;
   margin-top: 4px;
+`;
+
+export const ButtosWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
 `;
