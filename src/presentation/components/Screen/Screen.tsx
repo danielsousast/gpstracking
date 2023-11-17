@@ -1,11 +1,15 @@
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 import * as S from './Screen.styles';
-import {ScreenHeader} from '../ScreenHeader/ScreenHeader';
+import {ScreenHeader, ScreenHeaderProps} from '../ScreenHeader/ScreenHeader';
 
-export function Screen({children}: PropsWithChildren) {
+interface Props extends ScreenHeaderProps {
+  children: React.ReactNode;
+}
+
+export function Screen({children, ...headerProps}: Props) {
   return (
     <React.Fragment>
-      <ScreenHeader />
+      <ScreenHeader {...headerProps} />
       <S.ScreenContainer>
         <S.ScreenContent>{children}</S.ScreenContent>
       </S.ScreenContainer>

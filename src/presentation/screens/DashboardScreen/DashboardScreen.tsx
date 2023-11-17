@@ -9,9 +9,16 @@ import {
   Screen,
 } from '@/presentation/components';
 
-export function DashboardScreen() {
+export function DashboardScreen({navigation}: any) {
+  function onNavigatePress() {
+    navigation.navigate('SyncList');
+  }
   return (
-    <Screen>
+    <Screen
+      onNavigatePress={onNavigatePress}
+      withRightButton
+      titleAlign="left"
+      screenTitle="Olá, bem vindo">
       <S.Wrapper>
         <Image source={IconImage} />
         <S.WrapperContent>
