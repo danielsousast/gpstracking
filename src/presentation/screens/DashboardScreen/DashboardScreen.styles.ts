@@ -16,13 +16,6 @@ export const WrapperContent = styled.View`
   padding-left: 20px;
 `;
 
-export const StatusText = styled.Text`
-  color: green;
-  font-size: 16px;
-  font-style: italic;
-  margin-top: 4px;
-`;
-
 export const ButtosWrapper = styled.View`
   flex-direction: row;
   align-items: center;
