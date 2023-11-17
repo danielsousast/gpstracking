@@ -1,6 +1,6 @@
-import {DashboardScreen} from '@/presentation/screens';
+import {Navigator} from '@/common/main/navigation';
 import React from 'react';
 
 export const App: React.FC = () => {
-  return <DashboardScreen />;
+  return <Navigator />;
 };
