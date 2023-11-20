@@ -1,2 +1,2 @@
-export * from './point/service';
-export * from './point/model';
+export * from './packagePoint/apiService';
+export * from './packagePoint/model';

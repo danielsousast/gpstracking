@@ -1,6 +1,6 @@
 import {httpClient} from '@/infra';
 
-interface CreateParams {
+export interface CreateParams {
   latitude: number;
   longitude: number;
   speed: number;
@@ -15,6 +15,6 @@ async function create(params: CreateParams): Promise<void> {
   return reponse.data;
 }
 
-export const Service = {
+export const APIService = {
   create,
 };

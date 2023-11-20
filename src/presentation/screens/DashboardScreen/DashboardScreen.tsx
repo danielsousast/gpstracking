@@ -33,6 +33,7 @@ export function DashboardScreen({navigation}: any) {
   function onNavigatePress() {
     navigation.navigate('SyncList');
   }
+
   return (
     <Screen
       onNavigatePress={onNavigatePress}
