@@ -9,13 +9,16 @@ import {
   Screen,
 } from '@/presentation/components';
 import {useLocation} from '@/presentation/providers';
+import {NavigationScreenProps, RoutesEnum} from '@/main/navigation';
 
-export function DashboardScreen({navigation}: any) {
+export function DashboardScreen({
+  navigation,
+}: NavigationScreenProps<RoutesEnum.DASHBOARD>) {
   const {availableIntervals, handleSetNewInterval, selectedInterval} =
     useLocation();
 
   function onNavigatePress() {
-    navigation.navigate('SyncList');
+    navigation.navigate(RoutesEnum.PACKAGE_POINT_LIST);
   }
 
   return (

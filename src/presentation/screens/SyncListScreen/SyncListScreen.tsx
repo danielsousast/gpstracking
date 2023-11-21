@@ -3,8 +3,11 @@ import {Screen, StatusItem} from '@/presentation/components';
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
 import {EmptyList} from './components/EmptyList';
+import {NavigationScreenProps, RoutesEnum} from '@/main/navigation';
 
-export function SyncListScreen({navigation}: any) {
+export function SyncListScreen({
+  navigation,
+}: NavigationScreenProps<RoutesEnum.PACKAGE_POINT_LIST>) {
   const [loading, setLoading] = useState(true);
   const [packagePointList, setPackagePointList] = useState<any[]>([]);
 
