@@ -1,6 +1,6 @@
 import React, {createContext, useEffect} from 'react';
 import NetInfo from '@react-native-community/netinfo';
-import {syncData} from '@/data/packagePoint/syncdata';
+import {syncData} from '@/data/packagePoint/usecases/syncData';
 
 interface SyncData {
   isConnected: boolean;

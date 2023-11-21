@@ -1,25 +1,24 @@
+import Realm from 'realm';
 import {CreateParams} from '@/data';
 import {PackagePointSchema} from '@/infra';
-import NetInfo from '@react-native-community/netinfo';
 
 const realm = new Realm({schema: [PackagePointSchema]});
 const SCHEMA = 'PackagePoint';
 
-const createPackagePoint = async (params: CreateParams) => {
-  const isConnected = await NetInfo.fetch().then(state => {
-    return state.isConnected;
-  });
-  const synced = isConnected ? true : false;
+interface CreateLocalParams extends CreateParams {
+  synced: boolean;
+}
+
+const createPackagePoint = async (params: CreateLocalParams) => {
   realm.write(() => {
     realm.create(SCHEMA, {
       ...params,
-      synced,
+      _id: new Realm.BSON.ObjectId(),
     });
   });
 };
 
 const getAllPackages = ({onlyNotSynced = false}) => {
-  console.log(realm.objects(SCHEMA));
   if (onlyNotSynced) {
     return realm.objects(SCHEMA).filtered('synced == false');
   } else {

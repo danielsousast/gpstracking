@@ -1,5 +1,5 @@
-import {APIService} from './apiService';
-import {Storage} from './storageService';
+import {APIService} from '../services/apiService';
+import {Storage} from '../services/storageService';
 
 export const syncData = async () => {
   // Get all local packages

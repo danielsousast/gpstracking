@@ -1,14 +1,28 @@
+import {getPackagePointList} from '@/data';
 import {Screen, StatusItem} from '@/presentation/components';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
+import {EmptyList} from './components/EmptyList';
 
 export function SyncListScreen({navigation}: any) {
+  const [loading, setLoading] = useState(true);
+  const [packagePointList, setPackagePointList] = useState<any[]>([]);
+
   function handleGoBack() {
     navigation.goBack();
   }
 
-  function renderItem({}: ListRenderItemInfo<any>) {
-    return <StatusItem />;
+  useEffect(() => {
+    async function getPackagePoint() {
+      const response = await getPackagePointList();
+      setPackagePointList(response as any);
+      setLoading(false);
+    }
+    getPackagePoint();
+  }, []);
+
+  function renderItem({item}: ListRenderItemInfo<any>) {
+    return <StatusItem packagePoint={item} />;
   }
 
   return (
@@ -17,7 +31,13 @@ export function SyncListScreen({navigation}: any) {
       withBackButton
       screenTitle="Status"
       titleAlign="center">
-      <FlatList data={['1', '2', '3', '4', '5', '6']} renderItem={renderItem} />
+      <FlatList
+        data={packagePointList}
+        renderItem={renderItem}
+        ListEmptyComponent={<EmptyList loading={loading} />}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{flexGrow: 1}}
+      />
     </Screen>
   );
 }

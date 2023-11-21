@@ -8,28 +8,12 @@ import {
   IntervalButton,
   Screen,
 } from '@/presentation/components';
-
-const INTERVALS = [
-  {
-    value: '10',
-    label: '10s',
-  },
-  {
-    value: '5',
-    label: '5s',
-  },
-  {
-    value: '3',
-    label: '3s',
-  },
-  {
-    value: '1',
-    label: '1s',
-  },
-];
+import {useLocation} from '@/presentation/providers';
 
 export function DashboardScreen({navigation}: any) {
-  const [selectedInterval, setSelectedInterval] = React.useState('10');
+  const {availableIntervals, handleSetNewInterval, selectedInterval} =
+    useLocation();
+
   function onNavigatePress() {
     navigation.navigate('SyncList');
   }
@@ -54,11 +38,12 @@ export function DashboardScreen({navigation}: any) {
         Intervalo de comunicação
       </Text>
       <S.ButtosWrapper>
-        {INTERVALS.map(interval => (
+        {availableIntervals?.map(interval => (
           <IntervalButton
+            key={interval.value}
             selected={selectedInterval === interval.value}
             value={interval.label}
-            onPress={() => setSelectedInterval(interval.value)}
+            onPress={() => handleSetNewInterval(interval.value)}
           />
         ))}
       </S.ButtosWrapper>

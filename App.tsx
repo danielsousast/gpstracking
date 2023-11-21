@@ -1,14 +1,14 @@
-import {Navigator} from '@/main/navigation';
-import {SyncDataProvider} from '@/presentation/providers/syncData';
-import {RealmProvider} from '@realm/react';
 import React from 'react';
+import {Navigator} from '@/main/navigation';
+import {Providers} from '@/presentation/providers';
+import {RealmProvider} from '@realm/react';
 
 export const App: React.FC = () => {
   return (
     <RealmProvider>
-      <SyncDataProvider>
+      <Providers>
         <Navigator />
-      </SyncDataProvider>
+      </Providers>
     </RealmProvider>
   );
 };

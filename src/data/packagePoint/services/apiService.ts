@@ -9,7 +9,7 @@ export interface CreateParams {
 }
 
 async function create(params: CreateParams): Promise<void> {
-  const reponse = await httpClient.post<void>(`point/${params.packageId}`, {
+  const reponse = await httpClient.post<void>(`points/${params.packageId}`, {
     params,
   });
   return reponse.data;

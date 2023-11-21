@@ -1,4 +1,5 @@
-import Realm, {ObjectSchema} from 'realm';
+import Realm from 'realm';
+Realm.flags.THROW_ON_GLOBAL_REALM = true;
 
 // Define your object model
 export class PackagePointSchema extends Realm.Object<PackagePointSchema> {
@@ -9,7 +10,9 @@ export class PackagePointSchema extends Realm.Object<PackagePointSchema> {
   time!: string;
   speed!: number;
   synced!: boolean;
-  static schema: ObjectSchema = {
+  packageId!: string;
+
+  static schema: Realm.ObjectSchema = {
     name: 'PackagePoint',
     properties: {
       _id: 'objectId',
@@ -18,6 +21,7 @@ export class PackagePointSchema extends Realm.Object<PackagePointSchema> {
       time: 'string',
       speed: 'double',
       synced: 'bool',
+      packageId: 'string',
     },
     primaryKey: '_id',
   };
