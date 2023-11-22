@@ -1,34 +1,29 @@
-import {getPackagePointList} from '@/data';
 import {Screen, StatusItem, Text} from '@/presentation/components';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
 import {EmptyList} from './components/EmptyList';
 import {NavigationScreenProps, RoutesEnum} from '@/main/navigation';
 import styled from 'styled-components/native';
 import {useSyncData} from '@/presentation/providers';
+import {usePackageStore} from '@/presentation/stores/usePackageStore';
 
 export function SyncListScreen({
   navigation,
 }: NavigationScreenProps<RoutesEnum.PACKAGE_POINT_LIST>) {
   const {deleteAllData} = useSyncData();
-  const [loading, setLoading] = useState(true);
-  const [packagePointList, setPackagePointList] = useState<any[]>([]);
+
+  const {list, loading, fetchList} = usePackageStore();
+
+  React.useEffect(() => {
+    fetchList();
+  }, [fetchList]);
 
   function handleGoBack() {
     navigation.goBack();
   }
 
-  useEffect(() => {
-    async function getPackagePoint() {
-      const response = await getPackagePointList();
-      setPackagePointList(response as any);
-      setLoading(false);
-    }
-    getPackagePoint();
-  }, []);
-
   function handleClearHistory() {
-    deleteAllData && deleteAllData();
+    deleteAllData && deleteAllData({onSuccess: fetchList});
   }
 
   function renderItem({item}: ListRenderItemInfo<any>) {
@@ -41,13 +36,13 @@ export function SyncListScreen({
       withBackButton
       screenTitle="Status"
       titleAlign="center">
-      {packagePointList.length !== 0 && (
+      {list?.length !== 0 && (
         <Touchable onPress={handleClearHistory}>
           <Text>Limpar histórico</Text>
         </Touchable>
       )}
       <FlatList
-        data={packagePointList}
+        data={list}
         renderItem={renderItem}
         ListEmptyComponent={<EmptyList loading={loading} />}
         showsVerticalScrollIndicator={false}
