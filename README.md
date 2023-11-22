@@ -1,79 +1,83 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Gps Tracking 
 
-# Getting Started
+Um aplicação fictícia que envia localização do usuário para um API. Caso o usuário não tenha acesso a internet os dados são salvos no banco local e sincronizados posteriormente.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 🚀 Sobre o funcionamento básico
 
-## Step 1: Start the Metro Server
+Para salvar os dados offline no app foi utilizado o banco de dados RealmDB. 
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Ao enviar uma localização é feito o tratamento pra saber se o app vai ser enviado para a API ou só vai ser salvo no banco local.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Para lidar com a conexão com a internet foi utilizado a biblioteca NetInfo. 
 
-```bash
-# using npm
-npm start
+Quando o usuário está desconectado os dados são salvos com uma propriedade synced como false. No caso contrário como true.
 
-# OR using Yarn
-yarn start
+Ao identificar a conexão com a internet o app busca todos os dados salvos no banco filtrando pela propriedade synced. Com a lista de pacotes a serem sincronizados o app as envia para o servidor e atualiza o registro no banco local
+
+## 🚀 Começando
+
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local:
+
+### 📋 Pré-requisitos
+
+Para executar o projeto você precisa ter um ambiente react native configurado. Siga as instruções do link abaixo:
+
+https://react-native.rocketseat.dev/
+
+### 🔧 Instalação
+
+Depois de baixado o repositório e configurado o ambiente basta executar o seguinte comando no terminal (na pasta do projeto)
+
+Instalar dependências:
+
+```
+yarn
 ```
 
-## Step 2: Start your Application
+Instalar Pods
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```
+npx pod-install ios
 ```
 
-### For iOS
+Depois basta executar o comando para rodar para a plataforma específica:
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
+```
 yarn ios
 ```
+ou
+```
+yarn android
+```
+## ⚙️ Executando os testes
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+O projeto possui alguns poucos testes feitos. Para rodar bastar executar:
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```
+yarn test
+```
 
-## Step 3: Modifying your App
 
-Now that you have successfully run the app, let's modify it.
+## 🛠️ Construído com
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+Mencione as ferramentas que você usou para criar seu projeto
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+* [React Native](https://reactnative.dev/)
+* [Typescript](https://www.typescriptlang.org/)
+* [Zustand](https://github.com/pmndrs/zustand)
+* [React Native Geolocation](https://github.com/michalchudziak/react-native-geolocation)
+* [React Native NetInfo](https://github.com/react-native-netinfo/react-native-netinfo)
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+## 🎁 Algumas funcionalidades que poderiam entrar/próximos passos
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+* Sincronizar em background
+* Lidar com todos os erros
+* Melhorar Tipografia
+* Adicionar mais testes unitários
+* Adicionar testes de integração
 
-# Troubleshooting
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+---
+⌨️ com ❤️ por [Daniel de Sousa](https://gist.github.com/lohhans) 😊
