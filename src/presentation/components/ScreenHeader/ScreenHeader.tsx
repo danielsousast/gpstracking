@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import * as S from './ScreenHeader.styles';
-import {useAppSafeArea} from '@/presentation/hooks/useSafeAre';
+import {useAppSafeArea} from '@/presentation/hooks/useSafeArea';
 
 export interface ScreenHeaderProps {
   screenTitle: string;

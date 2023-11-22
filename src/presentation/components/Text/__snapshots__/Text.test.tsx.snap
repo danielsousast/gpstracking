@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Component should render with default props 1`] = `
+<Text
+  style={
+    [
+      {},
+      {
+        "color": "#000",
+        "fontSize": 16,
+        "fontStyle": "normal",
+        "fontWeight": "normal",
+        "marginTop": 0,
+      },
+    ]
+  }
+>
+  Test
+</Text>
+`;
+
+exports[`Text Component should render with preset 1`] = `
+<Text
+  style={
+    [
+      {},
+      {
+        "color": "#000",
+        "fontSize": 24,
+        "fontStyle": "normal",
+        "fontWeight": "bold",
+        "marginTop": 0,
+      },
+    ]
+  }
+>
+  Test
+</Text>
+`;
