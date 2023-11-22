@@ -22,7 +22,9 @@ export function SyncDataProvider({children}: React.PropsWithChildren<{}>) {
   }, []);
 
   useEffect(() => {
-    syncData();
+    if (isConnected) {
+      syncData();
+    }
   }, [isConnected]);
 
   return (

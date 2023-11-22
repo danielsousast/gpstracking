@@ -22,6 +22,6 @@ export const syncData = async () => {
     });
 
     // Update local package status
-    Storage.updatePackageStatus(pointPackage?._objectKey());
+    Storage.updatePackageStatus(pointPackage?._id);
   });
 };

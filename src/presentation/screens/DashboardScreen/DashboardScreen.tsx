@@ -1,7 +1,8 @@
 import React from 'react';
+import {Image} from 'react-native';
+import {useNetInfo} from '@react-native-community/netinfo';
 import * as S from './DashboardScreen.styles';
 import IconImage from '@/common/assets/icon.png';
-import {Image} from 'react-native';
 import {
   ToggleService,
   Text,
@@ -14,6 +15,7 @@ import {NavigationScreenProps, RoutesEnum} from '@/main/navigation';
 export function DashboardScreen({
   navigation,
 }: NavigationScreenProps<RoutesEnum.DASHBOARD>) {
+  const {isConnected} = useNetInfo();
   const {availableIntervals, handleSetNewInterval, selectedInterval} =
     useLocation();
 
@@ -31,8 +33,11 @@ export function DashboardScreen({
         <Image source={IconImage} />
         <S.WrapperContent>
           <Text preset="title">My GPS - Tracking</Text>
-          <Text preset="body" color="green" fontStyle="italic">
-            Online
+          <Text
+            preset="body"
+            color={isConnected ? 'green' : 'red'}
+            fontStyle="italic">
+            {isConnected ? 'Online' : 'Offline'}
           </Text>
         </S.WrapperContent>
       </S.Wrapper>

@@ -28,6 +28,7 @@ const getAllPackages = ({onlyNotSynced = false}) => {
 
 const updatePackageStatus = (id: string) => {
   const packageToUpdate = realm.objectForPrimaryKey(SCHEMA, id);
+  console.log('packageToUpdate', packageToUpdate);
   if (packageToUpdate) {
     realm.write(() => {
       packageToUpdate.synced = true;
