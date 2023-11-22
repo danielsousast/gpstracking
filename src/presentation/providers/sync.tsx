@@ -1,9 +1,11 @@
 import React, {createContext, useEffect} from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import {syncData} from '@/data/packagePoint/usecases/syncData';
+import {deleteHistory} from '@/data/packagePoint/usecases/cleanHistory';
 
 interface SyncData {
   isConnected: boolean;
+  deleteAllData?: () => void;
 }
 
 const SyncDataContext = createContext<SyncData>({} as SyncData);
@@ -27,8 +29,12 @@ export function SyncDataProvider({children}: React.PropsWithChildren<{}>) {
     }
   }, [isConnected]);
 
+  function deleteAllData() {
+    deleteHistory();
+  }
+
   return (
-    <SyncDataContext.Provider value={{isConnected}}>
+    <SyncDataContext.Provider value={{isConnected, deleteAllData}}>
       {children}
     </SyncDataContext.Provider>
   );

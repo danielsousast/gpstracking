@@ -1,13 +1,16 @@
 import {getPackagePointList} from '@/data';
-import {Screen, StatusItem} from '@/presentation/components';
+import {Screen, StatusItem, Text} from '@/presentation/components';
 import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
 import {EmptyList} from './components/EmptyList';
 import {NavigationScreenProps, RoutesEnum} from '@/main/navigation';
+import styled from 'styled-components/native';
+import {useSyncData} from '@/presentation/providers';
 
 export function SyncListScreen({
   navigation,
 }: NavigationScreenProps<RoutesEnum.PACKAGE_POINT_LIST>) {
+  const {deleteAllData} = useSyncData();
   const [loading, setLoading] = useState(true);
   const [packagePointList, setPackagePointList] = useState<any[]>([]);
 
@@ -24,6 +27,10 @@ export function SyncListScreen({
     getPackagePoint();
   }, []);
 
+  function handleClearHistory() {
+    deleteAllData && deleteAllData();
+  }
+
   function renderItem({item}: ListRenderItemInfo<any>) {
     return <StatusItem packagePoint={item} />;
   }
@@ -34,6 +41,11 @@ export function SyncListScreen({
       withBackButton
       screenTitle="Status"
       titleAlign="center">
+      {packagePointList.length !== 0 && (
+        <Touchable onPress={handleClearHistory}>
+          <Text>Limpar histórico</Text>
+        </Touchable>
+      )}
       <FlatList
         data={packagePointList}
         renderItem={renderItem}
@@ -44,3 +56,7 @@ export function SyncListScreen({
     </Screen>
   );
 }
+
+export const Touchable = styled.TouchableOpacity`
+  align-items: flex-end;
+`;

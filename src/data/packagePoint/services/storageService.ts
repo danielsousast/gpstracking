@@ -36,8 +36,16 @@ const updatePackageStatus = (id: string) => {
   }
 };
 
+// Delete all data
+function deleteAll() {
+  realm.write(() => {
+    realm.deleteAll();
+  });
+}
+
 export const Storage = {
   getAllPackages,
   updatePackageStatus,
   createPackagePoint,
+  deleteAll,
 };
