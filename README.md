@@ -80,4 +80,4 @@ Mencione as ferramentas que você usou para criar seu projeto
 
 
 ---
-⌨️ com ❤️ por [Daniel de Sousa](https://gist.github.com/lohhans) 😊
+⌨️ com ❤️ por [Daniel de Sousa](https://www.linkedin.com/in/danielsousast/) 😊
